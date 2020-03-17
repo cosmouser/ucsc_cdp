@@ -214,16 +214,29 @@ function ucsc_cdp_profile_render($attributes, $content) {
 	}
 	$result = '';
 	if($attributes['displayStyle'] === 'list') {
-		$result .= render_profiles_list($profiles, $attributes, $options);
+		$result .= render_profiles_list($uids, $profiles, $attributes, $options);
 	} else {
-		$result .= render_profiles_grid($profiles, $attributes, $options);
+		$result .= render_profiles_grid($uids, $profiles, $attributes, $options);
 	}
 	return $result;
 }
-function render_profiles_grid($profiles, $attributes, $options) {
-	// Render markup to be returned
+function gen_response_index_map($profiles) {
+	$result = array();
+	foreach($profiles as $num => $entry) {
+		$result[$entry['uid'][0]] = $num;
+	}
+	return $result;
+}
+function render_profiles_grid($uids, $profiles, $attributes, $options) {
+	$index_map = gen_response_index_map($profiles);
 	$result = '<div class="cdp-profiles cdp-display-' . $attributes['displayStyle'] . ' ' . ucsc_cdp_block_classes($attributes) . '">';
-	foreach($profiles as $entry) {
+	foreach($uids as $uid_value) {
+		$entry = null;
+		if(isset($profiles[$index_map[$uid_value]])) {
+			$entry = $profiles[$index_map[$uid_value]];
+		} else {
+			continue;
+		}
 		$result .= '<div class="cdp-profile grid" id="cdp-profile-';
 		$result .= $entry['uid'][0] . '"><ul class="cdp-profile-ul">';
 		if($attributes['jpegPhoto']) {
@@ -274,9 +287,16 @@ function render_profiles_grid($profiles, $attributes, $options) {
 	$result .= '</div>';
 	return $result;
 }
-function render_profiles_list($profiles, $attributes, $options) {
+function render_profiles_list($uids, $profiles, $attributes, $options) {
+	$index_map = gen_response_index_map($profiles);
 	$result = '<div class="cdp-profiles-list ' . ucsc_cdp_block_classes($attributes) . '">';
-	foreach($profiles as $entry) {
+	foreach($uids as $uid_value) {
+		$entry = null;
+		if(isset($profiles[$index_map[$uid_value]])) {
+			$entry = $profiles[$index_map[$uid_value]];
+		} else {
+			continue;
+		}
 		$result .= '<div class="cdp-list-profile" id="cdp-profile-';
 		$result .= $entry['uid'][0] . '">';
 		if($attributes['cn'] && !empty($entry['cn'])) {
