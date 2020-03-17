@@ -3,6 +3,7 @@ A plugin for Wordpress that adds a Gutenberg block and a shortcode for adding dy
 
 ## Example shortcode
 `[ucsc_profiles cruzids="cosmo, sammy" title=true phone=true email=true]`
+
 `[ucsc_profiles displaystyle=list]`
 ## Shortcode attributes guide
 | Attribute      | Default Value |
