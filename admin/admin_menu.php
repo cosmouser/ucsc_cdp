@@ -6,8 +6,8 @@ if (!defined('ABSPATH')) {
 function ucsc_cdp_add_sublevel_menu() {
 	add_submenu_page(
 		'options-general.php',
-		'Campusdirectory Profiles Plugin Settings',
-		'Campusdirectory Profiles',
+		'UCSC Profiles Plugin Settings',
+		'UCSC Profiles',
 		'manage_options',
 		'ucsc_cdp',
 		'ucsc_cdp_display_settings_page'
