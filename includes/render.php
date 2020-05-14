@@ -138,7 +138,7 @@ function ucsc_cdp_profile_render_shortcode($attributes) {
 		'displaystyle' => 'grid',
 	), $attributes);
 	foreach($sa as $key => $value) {
-		if($key === 'cruzids' || $key === 'grid') {
+		if($key === 'cruzids' || $key === 'displaystyle') {
 			continue;
 		}
 		if($value === 'true') {
