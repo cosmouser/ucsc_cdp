@@ -111,10 +111,10 @@ function send_cdp_request($filter, $attribute_names) {
 
 function ucsc_cdp_block_classes($attributes) {
         $classes = null;
-	if (isset($attributes['align'])) {
+	if(isset($attributes['align'])) {
 		$classes = 'align' . $attributes['align'] . ' ';
 	}
-	if (isset($attributes['className'])) {
+	if(isset($attributes['className'])) {
 		$classes .= $attributes['className'];
 	}
 	if($classes === null) {
@@ -123,7 +123,7 @@ function ucsc_cdp_block_classes($attributes) {
 	return $classes;
 }
 function ucsc_cdp_profile_render_shortcode($attributes) {
-	extract(shortcode_atts(array(
+	$sa = shortcode_atts(array(
 		'cruzids' => 'cosmo',
 		'photo' => true,
 		'name' => true,
@@ -136,20 +136,31 @@ function ucsc_cdp_profile_render_shortcode($attributes) {
 		'expertise' => false,
 		'profilelinks' => true,
 		'displaystyle' => 'grid',
-	), $attributes));
+	), $attributes);
+	foreach($sa as $key => $value) {
+		if($key === 'cruzids' || $key === 'grid') {
+			continue;
+		}
+		if($value === 'true') {
+			$sa[$key] = true;
+		}
+		if($value === 'false') {
+			$sa[$key] = false;
+		}
+	}
 	$attrs = array(
-		'uids' => $cruzids,
-		'jpegPhoto' => $photo,
-		'cn' => $name,
-		'title' => $title,
-		'telephoneNumber' => $phone,
-		'mail' => $email,
-		'labeledURI' => $websites,
-		'ucscPersonPubOfficeLocationDetail' => $officelocation,
-		'ucscPersonPubOfficeHours' => $officehours,
-		'ucscPersonPubAreaOfExpertise' => $expertise,
-		'profLinks' => $profilelinks,
-		'displayStyle' => $displaystyle,
+		'uids' => $sa['cruzids'],
+		'jpegPhoto' => $sa['photo'],
+		'cn' => $sa['name'],
+		'title' => $sa['title'],
+		'telephoneNumber' => $sa['phone'],
+		'mail' => $sa['email'],
+		'labeledURI' => $sa['websites'],
+		'ucscPersonPubOfficeLocationDetail' => $sa['officelocation'],
+		'ucscPersonPubOfficeHours' => $sa['officehours'],
+		'ucscPersonPubAreaOfExpertise' => $sa['expertise'],
+		'profLinks' => $sa['profilelinks'],
+		'displayStyle' => $sa['displaystyle'],
 	);
 	return ucsc_cdp_profile_render($attrs, null);
 }
