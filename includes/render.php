@@ -189,6 +189,7 @@ function ucsc_cdp_profile_render($attributes, $content) {
 		array_push($attrs_for_query, 'labeledURI');
 	}
 	if($attributes['ucscPersonPubOfficeLocationDetail']) {
+		array_push($attrs_for_query, 'ucscPrimaryLocationPubOfficialName');
 		array_push($attrs_for_query, 'ucscPersonPubOfficeLocationDetail');
 	}
 	if($attributes['ucscPersonPubOfficeHours']) {
@@ -280,6 +281,7 @@ function render_profiles_grid($uids, $profiles, $attributes, $options) {
 		}
 		if($attributes['ucscPersonPubOfficeLocationDetail'] && !empty($entry['ucscPersonPubOfficeLocationDetail'])) {
 			$result .= '<li>';
+			$result .= render_attr_multi_line($entry, 'ucscPrimaryLocationPubOfficialName', $options);
 			$result .= render_attr_multi_line($entry, 'ucscPersonPubOfficeLocationDetail', $options);
 			$result .= '</li>';
 		}
@@ -336,7 +338,7 @@ function render_profiles_list($uids, $profiles, $attributes, $options) {
 		}
 		if($attributes['ucscPersonPubOfficeLocationDetail'] && !empty($entry['ucscPersonPubOfficeLocationDetail'])) {
 			$result .= '<li><span class="cdp-li-header">Office Location</span><ul class="cdp-inline-list">';
-			$result .= '<li>' . render_attr_multi_line($entry, 'ucscPersonPubOfficeLocationDetail', $options, $attributes) . '</li>';
+			$result .= '<li>' . render_attr_multi_line($entry, 'ucscPrimaryLocationPubOfficialName', $options) . '</li><li>' . render_attr_multi_line($entry, 'ucscPersonPubOfficeLocationDetail', $options, $attributes) . '</li>';
 			$result .= '</ul></li>';
 		}
 		if($attributes['ucscPersonPubOfficeHours'] && !empty($entry['ucscPersonPubOfficeHours'])) {
