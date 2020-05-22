@@ -318,25 +318,49 @@ function render_profiles_grid($uids, $profiles, $attributes, $options) {
 			$result .= render_grid_attr(render_attr_multi_line($entry, 'ucscPersonPubOfficeHours', $options));
 		}
 		if($attributes['ucscPersonPubAreaOfExpertise'] && !empty($entry['ucscPersonPubAreaOfExpertise'])) {
-			$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubAreaOfExpertise'] === 'short') {
+				$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $profile_uid));
+			} else {
+				$result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes));
+			}
 		}
 		if($attributes['ucscPersonPubDescription'] && !empty($entry['ucscPersonPubDescription'])) {
-		        $result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubDescription'] === 'short') {
+			        $result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $profile_uid));
+			} else {
+			        $result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes));
+			}
 		}
 		if($attributes['ucscPersonPubExpertiseReference'] && !empty($entry['ucscPersonPubExpertiseReference'])) {
 			$result .= render_grid_attr(render_attr_multi_line($entry, 'ucscPersonPubExpertiseReference', $options, $attributes));
 		}
 		if($attributes['ucscPersonPubResearchInterest'] && !empty($entry['ucscPersonPubResearchInterest'])) {
-			$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubResearchInterest'] === 'short') {
+				$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $profile_uid));
+			} else {
+				$result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes));
+			}
 		}
 		if($attributes['ucscPersonPubTeachingInterest'] && !empty($entry['ucscPersonPubTeachingInterest'])) {
-			$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubTeachingInterest'] === 'short') {
+				$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $profile_uid));
+			} else {
+				$result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes));
+			}
 		}
 		if($attributes['ucscPersonPubAwardsHonorsGrants'] && !empty($entry['ucscPersonPubAwardsHonorsGrants'])) {
-			$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubAwardsHonorsGrants'] === 'short') {
+				$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $profile_uid));
+			} else {
+				$result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes));
+			}
 		}
 		if($attributes['ucscPersonPubSelectedPublication'] && !empty($entry['ucscPersonPubSelectedPublication'])) {
-			$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $profile_uid));
+			if($attributes['ucscPersonPubSelectedPublication'] === 'short') {
+				$result .= render_grid_attr(ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $profile_uid));
+			} else {
+				$result .= render_grid_attr(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes));
+			}
 		}
 		$result .= '</ul></div>';
 	}
@@ -379,25 +403,49 @@ function render_profiles_list($uids, $profiles, $attributes, $options) {
 			$result .= render_list_attr('Office Hours', '<li>' . render_attr_multi_line($entry, 'ucscPersonPubOfficeHours', $options, $attributes) . '</li>');
 		}
 		if($attributes['ucscPersonPubAreaOfExpertise'] && !empty($entry['ucscPersonPubAreaOfExpertise'])) {
-			$result .= render_list_attr('Summary of Expertise', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubAreaOfExpertise'] === 'short') {
+				$result .= render_list_attr('Summary of Expertise', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Summary of Expertise', '<li>' . render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes) . '</li>');
+			}
 		}
 		if($attributes['ucscPersonPubDescription'] && !empty($entry['ucscPersonPubDescription'])) {
-			$result .= render_list_attr('Biography, Education, and Training', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubDescription'] === 'short') {
+				$result .= render_list_attr('Biography, Education, and Training', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Biography, Education, and Training', '<li>' . render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes) . '</li>');
+			}
 		}
 		if($attributes['ucscPersonPubExpertiseReference'] && !empty($entry['ucscPersonPubExpertiseReference'])) {
 			$result .= render_list_attr('Areas of Expertise', '<li>' . render_attr_multi_line($entry, 'ucscPersonPubExpertiseReference', $options, $attributes) . '</li>');
 		}
 		if($attributes['ucscPersonPubResearchInterest'] && !empty($entry['ucscPersonPubResearchInterest'])) {
-			$result .= render_list_attr('Research Interests', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubResearchInterest'] === 'short') {
+				$result .= render_list_attr('Research Interests', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Research Interests', '<li>' . render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes) . '</li>');
+			}
 		}
 		if($attributes['ucscPersonPubTeachingInterest'] && !empty($entry['ucscPersonPubTeachingInterest'])) {
-			$result .= render_list_attr('Teaching Interests', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubTeachingInterest'] === 'short') {
+				$result .= render_list_attr('Teaching Interests', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Teaching Interests', '<li>' . render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes) . '</li>');
+			}
 		}
 		if($attributes['ucscPersonPubAwardsHonorsGrants'] && !empty($entry['ucscPersonPubAwardsHonorsGrants'])) {
-			$result .= render_list_attr('Awards, Honors, and Grants', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubAwardsHonorsGrants'] === 'short') {
+				$result .= render_list_attr('Awards, Honors, and Grants', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Awards, Honors, and Grants', '<li>' . render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes) . '</li>');
+			}
 		}
 		if($attributes['ucscPersonPubSelectedPublication'] && !empty($entry['ucscPersonPubSelectedPublication'])) {
-			$result .= render_list_attr('Selected Publications', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $profile_uid) . '</li>');
+			if($attributes['ucscPersonPubSelectedPublication'] === 'short') {
+				$result .= render_list_attr('Selected Publications', '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $profile_uid) . '</li>');
+			} else {
+				$result .= render_list_attr('Selected Publications', '<li>' . render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes) . '</li>');
+			}
 		}
 		$result .= '</ul></div>';
 		if($attributes['jpegPhoto']) {
