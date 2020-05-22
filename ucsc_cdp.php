@@ -49,64 +49,66 @@ function ucsc_cdp_add_block() {
 		array(),
 		filemtime(plugin_dir_path(__FILE__) . 'public/css/style.css')
 	);
-	register_block_type(
-		'ucsc-cdp/profile', 
-		array(
-			'editor_script' => 'ucsc_cdp-js',
-			'style' => 'profile-block',
-			'render_callback' => 'ucsc_cdp_profile_render',
-			'attributes' => array(
-				'uids' => array(
-					'type' => 'string', 
-					'default' => '',
+	if(function_exists('register_block_type')) {
+		register_block_type(
+			'ucsc-cdp/profile',
+			array(
+				'editor_script' => 'ucsc_cdp-js',
+				'style' => 'profile-block',
+				'render_callback' => 'ucsc_cdp_profile_render',
+				'attributes' => array(
+					'uids' => array(
+						'type' => 'string',
+						'default' => '',
+					),
+					'jpegPhoto' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'cn' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'title' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'telephoneNumber' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'mail' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'labeledURI' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'ucscPersonPubOfficeLocationDetail' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'ucscPersonPubOfficeHours' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'ucscPersonPubAreaOfExpertise' => array(
+						'type' => 'boolean',
+						'default' => false,
+					),
+					'profLinks' => array(
+						'type' => 'boolean',
+						'default' => true,
+					),
+					'displayStyle' => array(
+						'type' => 'string',
+						'default' => 'grid',
+					),
 				),
-				'jpegPhoto' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'cn' => array(
-					'type' => 'boolean', 
-					'default' => false,
-				),
-				'title' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'telephoneNumber' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'mail' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'labeledURI' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'ucscPersonPubOfficeLocationDetail' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'ucscPersonPubOfficeHours' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'ucscPersonPubAreaOfExpertise' => array(
-					'type' => 'boolean',
-					'default' => false,
-				),
-				'profLinks' => array(
-					'type' => 'boolean',
-					'default' => true,
-				),
-				'displayStyle' => array(
-					'type' => 'string', 
-					'default' => 'grid',
-				),
-			),
-		)
-	);
+			)
+		);
+	}
 }
 function enqueue_style() {
 	wp_enqueue_style('profile-block');
