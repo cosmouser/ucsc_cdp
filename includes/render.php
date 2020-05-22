@@ -135,6 +135,12 @@ function ucsc_cdp_profile_render_shortcode($attributes) {
 		'officehours' => false,
 		'expertise' => false,
 		'profilelinks' => true,
+		'biography' => false,
+		'areas_of_expertise' => false,
+		'research_interests' => false,
+		'teaching_interests' => false,
+		'awards' => false,
+		'publications' => false,
 		'displaystyle' => 'grid',
 	), $attributes);
 	foreach($sa as $key => $value) {
@@ -160,6 +166,12 @@ function ucsc_cdp_profile_render_shortcode($attributes) {
 		'ucscPersonPubOfficeHours' => $sa['officehours'],
 		'ucscPersonPubAreaOfExpertise' => $sa['expertise'],
 		'profLinks' => $sa['profilelinks'],
+		'ucscPersonPubDescription' => $sa['biography'],
+		'ucscPersonPubExpertiseReference' => $sa['areas_of_expertise'],
+		'ucscPersonPubResearchInterest' => $sa['research_interests'],
+		'ucscPersonPubTeachingInterest' => $sa['teaching_interests'],
+		'ucscPersonPubAwardsHonorsGrants' => $sa['awards'],
+		'ucscPersonPubSelectedPublication' => $sa['publications'],
 		'displayStyle' => $sa['displaystyle'],
 	);
 	return ucsc_cdp_profile_render($attrs, null);
@@ -197,6 +209,24 @@ function ucsc_cdp_profile_render($attributes, $content) {
 	}
 	if($attributes['ucscPersonPubAreaOfExpertise']) {
 		array_push($attrs_for_query, 'ucscPersonPubAreaOfExpertise');
+	}
+	if($attributes['ucscPersonPubDescription']) {
+		array_push($attrs_for_query, 'uucscPersonPubDescription');
+	}
+	if($attributes['ucscPersonPubExpertiseReference']) {
+		array_push($attrs_for_query, 'ucscPersonPubExpertiseReference');
+	}
+	if($attributes['ucscPersonPubResearchInterest']) {
+		array_push($attrs_for_query, 'ucscPersonPubResearchInterest');
+	}
+	if($attributes['ucscPersonPubTeachingInterest']) {
+		array_push($attrs_for_query, 'ucscPersonPubTeachingInterest');
+	}
+	if($attributes['ucscPersonPubAwardsHonorsGrants']) {
+		array_push($attrs_for_query, 'ucscPersonPubAwardsHonorsGrants');
+	}
+	if($attributes['ucscPersonPubSelectedPublication']) {
+		array_push($attrs_for_query, 'ucscPersonPubSelectedPublication');
 	}
 	$options = get_option('ucsc_cdp_options', ucsc_cdp_options_default());
 	$profile_server_url = $options['profile_server_url'];
