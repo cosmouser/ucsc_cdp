@@ -23,6 +23,12 @@ registerBlockType("ucsc-cdp/profile", {
 		ucscPersonPubOfficeLocationDetail: { type: 'boolean', default: false },
 		ucscPersonPubOfficeHours: { type: 'boolean', default: false },
 		ucscPersonPubAreaOfExpertise: { type: 'boolean', default: false },
+		ucscPersonPubDescription: { type: 'boolean', default: false },
+		ucscPersonPubExpertiseReference: { type: 'boolean', default: false },
+		ucscPersonPubResearchInterest: { type: 'boolean', default: false },
+		ucscPersonPubTeachingInterest: { type: 'boolean', default: false },
+		ucscPersonPubAwardsHonorsGrants: { type: 'boolean', default: false },
+		ucscPersonPubSelectedPublication: { type: 'boolean', default: false },
 		profLinks: { type: 'boolean', default: true },
 		displayStyle: { type: 'string', default: 'grid' }
 	},
@@ -101,6 +107,42 @@ registerBlockType("ucsc-cdp/profile", {
 		attrName="ucscPersonPubAreaOfExpertise"
 		value={attributes.ucscPersonPubAreaOfExpertise}
 		toggle={() => { setAttributes({ucscPersonPubAreaOfExpertise: !attributes.ucscPersonPubAreaOfExpertise})}}
+		/>
+		<AttrCheckboxControl
+		label="Biography, Education and Training"
+		attrName="ucscPersonPubDescription"
+		value={attributes.ucscPersonPubDescription}
+		toggle={() => { setAttributes({ucscPersonPubDescription: !attributes.ucscPersonPubDescription})}}
+		/>
+		<AttrCheckboxControl
+		label="Areas of Expertise"
+		attrName="ucscPersonPubExpertiseReference"
+		value={attributes.ucscPersonPubExpertiseReference}
+		toggle={() => { setAttributes({ucscPersonPubExpertiseReference: !attributes.ucscPersonPubExpertiseReference})}}
+		/>
+		<AttrCheckboxControl
+		label="Research Interests"
+		attrName="ucscPersonPubResearchInterest"
+		value={attributes.ucscPersonPubResearchInterest}
+		toggle={() => { setAttributes({ucscPersonPubResearchInterest: !attributes.ucscPersonPubResearchInterest})}}
+		/>
+		<AttrCheckboxControl
+		label="Teaching Interests"
+		attrName="ucscPersonPubTeachingInterest"
+		value={attributes.ucscPersonPubTeachingInterest}
+		toggle={() => { setAttributes({ucscPersonPubTeachingInterest: !attributes.ucscPersonPubTeachingInterest})}}
+		/>
+		<AttrCheckboxControl
+		label="Awards, Honors and Grants"
+		attrName="ucscPersonPubAwardsHonorsGrants"
+		value={attributes.ucscPersonPubAwardsHonorsGrants}
+		toggle={() => { setAttributes({ucscPersonPubAwardsHonorsGrants: !attributes.ucscPersonPubAwardsHonorsGrants})}}
+		/>
+		<AttrCheckboxControl
+		label="Selected Publications"
+		attrName="ucscPersonPubSelectedPublication"
+		value={attributes.ucscPersonPubSelectedPublication}
+		toggle={() => { setAttributes({ucscPersonPubSelectedPublication: !attributes.ucscPersonPubSelectedPublication})}}
 		/>
 		</PanelBody>
 		<PanelBody title="Configuration">
