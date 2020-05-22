@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: UCSC Profiles
-Plugin URI: https://its.ucsc.edu
+Plugin URI: https://github.com/cosmouser/ucsc_cdp
 Description: Provides a block for adding UCSC campus directory profiles to pages.
 Author: Cosmo Martinez 
 Author URI: https://github.com/cosmouser
 License: BSD3
-Version: 1.0.0
+Version: 1.0.1
 */
 defined( 'ABSPATH' ) || exit;
 
