@@ -211,7 +211,7 @@ function ucsc_cdp_profile_render($attributes, $content) {
 		array_push($attrs_for_query, 'ucscPersonPubAreaOfExpertise');
 	}
 	if($attributes['ucscPersonPubDescription']) {
-		array_push($attrs_for_query, 'uucscPersonPubDescription');
+		array_push($attrs_for_query, 'ucscPersonPubDescription');
 	}
 	if($attributes['ucscPersonPubExpertiseReference']) {
 		array_push($attrs_for_query, 'ucscPersonPubExpertiseReference');
@@ -325,6 +325,36 @@ function render_profiles_grid($uids, $profiles, $attributes, $options) {
 			$result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $entry['uid'][0]);
 			$result .= '</li>';
 		}
+		if($attributes['ucscPersonPubDescription'] && !empty($entry['ucscPersonPubDescription'])) {
+			$result .= '<li>';
+		        $result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $entry['uid'][0]);
+			$result .= '</li>';
+		}
+		if($attributes['ucscPersonPubExpertiseReference'] && !empty($entry['ucscPersonPubExpertiseReference'])) {
+			$result .= '<li>';
+			$result .= render_attr_multi_line($entry, 'ucscPersonPubExpertiseReference', $options, $attributes);
+			$result .= '</li>';
+		}
+		if($attributes['ucscPersonPubResearchInterest'] && !empty($entry['ucscPersonPubResearchInterest'])) {
+			$result .= '<li>';
+			$result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $entry['uid'][0]);
+			$result .= '</li>';
+		}
+		if($attributes['ucscPersonPubTeachingInterest'] && !empty($entry['ucscPersonPubTeachingInterest'])) {
+			$result .= '<li>';
+			$result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $entry['uid'][0]);
+			$result .= '</li>';
+		}
+		if($attributes['ucscPersonPubAwardsHonorsGrants'] && !empty($entry['ucscPersonPubAwardsHonorsGrants'])) {
+			$result .= '<li>';
+			$result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $entry['uid'][0]);
+			$result .= '</li>';
+		}
+		if($attributes['ucscPersonPubSelectedPublication'] && !empty($entry['ucscPersonPubSelectedPublication'])) {
+			$result .= '<li>';
+			$result .= ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $entry['uid'][0]);
+			$result .= '</li>';
+		}
 		$result .= '</ul></div>';
 	}
 	$result .= '</div>';
@@ -379,6 +409,36 @@ function render_profiles_list($uids, $profiles, $attributes, $options) {
 		if($attributes['ucscPersonPubAreaOfExpertise'] && !empty($entry['ucscPersonPubAreaOfExpertise'])) {
 			$result .= '<li><span class="cdp-li-header">Summary of Expertise</span><ul class="cdp-inline-list">';
 			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAreaOfExpertise', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubDescription'] && !empty($entry['ucscPersonPubDescription'])) {
+			$result .= '<li><span class="cdp-li-header">Biography, Education and Training</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubDescription', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubExpertiseReference'] && !empty($entry['ucscPersonPubExpertiseReference'])) {
+			$result .= '<li><span class="cdp-li-header">Areas of Expertise</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . render_attr_multi_line($entry, 'ucscPersonPubExpertiseReference', $options, $attributes) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubResearchInterest'] && !empty($entry['ucscPersonPubResearchInterest'])) {
+			$result .= '<li><span class="cdp-li-header">Research Interests</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubResearchInterest', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubTeachingInterest'] && !empty($entry['ucscPersonPubTeachingInterest'])) {
+			$result .= '<li><span class="cdp-li-header">Teaching Interests</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubTeachingInterest', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubAwardsHonorsGrants'] && !empty($entry['ucscPersonPubAwardsHonorsGrants'])) {
+			$result .= '<li><span class="cdp-li-header">Awards, Honors and Grants</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubAwardsHonorsGrants', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
+			$result .= '</ul></li>';
+		}
+		if($attributes['ucscPersonPubSelectedPublication'] && !empty($entry['ucscPersonPubSelectedPublication'])) {
+			$result .= '<li><span class="cdp-li-header">Selected Publications</span><ul class="cdp-inline-list">';
+			$result .= '<li>' . ucsc_cdp_read_more(render_attr_single_line($entry, 'ucscPersonPubSelectedPublication', $options, $attributes), $options, $entry['uid'][0]) . '</li>';
 			$result .= '</ul></li>';
 		}
 		$result .= '</ul></div>';
