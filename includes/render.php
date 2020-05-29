@@ -84,7 +84,7 @@ function render_list_attr($title, $content) {
 	return $result;
 }
 function render_grid_attr($content) {
-	$result .= '<li>' . $content . '</li>';
+	$result = '<li>' . $content . '</li>';
 	return $result;
 }
 
